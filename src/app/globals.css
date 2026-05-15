@@ -80,6 +80,7 @@ body {
     @apply font-serif font-black tracking-tight;
     background: linear-gradient(180deg, #020617 0%, #334155 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
