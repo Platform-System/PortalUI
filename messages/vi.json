@@ -1,0 +1,47 @@
+{
+  "Portal": {
+    "welcome": "WELCOME TO THE UNIVERSE",
+    "title": "NYXORIS",
+    "description": "Cánh cổng bước vào hệ sinh thái kỹ thuật số đa nền tảng. Nơi hội tụ của thẩm mỹ, công nghệ và những trải nghiệm độc bản.",
+    "subtitle": "A multi-platform digital ecosystem where aesthetics meets technology. Enter the gateway to a refined digital experience.",
+    "hero": {
+      "ctaExplore": "Khám phá hệ sinh thái",
+      "ctaStore": "Trung tâm Merchant"
+    },
+    "unifiedNetwork": "Hệ thống mạng lưới hợp nhất",
+    "ecosystem": {
+      "title": "One ecosystem. Multiple worlds.",
+      "subtitle": "Tầm nhìn về một tương lai kỹ thuật số không giới hạn, nơi mọi nhu cầu được kết nối liền mạch."
+    },
+    "footer": {
+      "tagline": "APPLIED TECHNOLOGY & ARTISTRY",
+      "description": "Hệ sinh thái kỹ thuật số đa nền tảng tập trung vào trải nghiệm người dùng và thẩm mỹ hiện đại.",
+      "links": {
+        "platforms": "Nền tảng",
+        "vision": "Tầm nhìn",
+        "ecosystem": "Hệ sinh thái",
+        "privacy": "Bảo mật"
+      }
+    },
+    "platforms": {
+      "store": {
+        "title": "Merchant Center",
+        "subtitle": "Hệ thống bán hàng",
+        "description": "Nền tảng quản lý và vận hành kinh doanh chuyên nghiệp cho các thương hiệu hàng đầu.",
+        "highlight": "Dành cho Merchant",
+        "cta": "Truy cập ngay"
+      },
+      "social": {
+        "title": "Cosmic Circle",
+        "subtitle": "Mạng xã hội",
+        "description": "Không gian riêng tư cho cộng đồng Nyxoris chia sẻ cảm hứng và đam mê sáng tạo.",
+        "highlight": "Bản thử nghiệm",
+        "cta": "Sắp ra mắt"
+      }
+    },
+    "status": {
+      "online": "Trực tuyến",
+      "upcoming": "Sắp tới"
+    }
+  }
+}

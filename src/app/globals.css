@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Nyxoris Platform - Modern Winter/Cosmic Theme (Đồng bộ từ StoreUI) */
+  --background: #FFFFFF; 
+  --foreground: #020617; 
+  --card: #FFFFFF;
+  --popover: #FFFFFF;
+
+  --store-accent-rgb: 99 102 241; 
+  --store-accent-glow-alpha: 0.15;
+  --store-surface-rgb: 255 255 255;
+  --store-surface-strong-rgb: 248 250 252;
+  --store-border-rgb: 226 232 240;
+  --store-muted-rgb: 100 116 139;
+  --store-ink-rgb: 15 23 42;
+  
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-bg: rgba(255, 255, 255, 0.7);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+@theme {
+  --font-sans: var(--font-plus-jakarta);
   --font-mono: var(--font-geist-mono);
-}
+  --font-serif: var(--font-playfair);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-primary: rgb(var(--store-accent-rgb));
+  --color-secondary: rgb(var(--store-surface-strong-rgb));
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-beam: beam 15s linear infinite;
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes beam {
+    0% { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: translateX(200%) skewX(-15deg); opacity: 0; }
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-plus-jakarta), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* Premium Glassmorphism */
+  .glass-card {
+    @apply backdrop-blur-3xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+    border: 1px solid var(--glass-border);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 0, 0, 0.02),
+      0 20px 40px -12px rgba(15, 23, 42, 0.05),
+      inset 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+
+  .glass-card-hover {
+    @apply transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)];
+  }
+
+  .glass-card-hover:hover {
+    @apply -translate-y-4 scale-[1.01];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+    border-color: rgba(99, 102, 241, 0.3);
+    box-shadow: 
+      0 40px 80px -15px rgba(15, 23, 42, 0.08),
+      inset 0 0 30px rgba(99, 102, 241, 0.05);
+  }
+
+  /* Typography */
+  .hero-title {
+    @apply font-serif font-black tracking-tight;
+    background: linear-gradient(180deg, #020617 0%, #334155 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .portal-accent-glow {
+    background: radial-gradient(circle at center, rgb(var(--store-accent-rgb) / 0.1) 0%, transparent 70%);
+  }
+  
+  .light-beam {
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-15deg);
+    pointer-events: none;
+    filter: blur(40px);
+  }
+}
+
+/* Tinh chỉnh màu bôi đen (Selection) */
+::selection {
+  background-color: rgb(var(--store-accent-rgb) / 0.15);
+  color: inherit;
+}
+
+.select-none {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
