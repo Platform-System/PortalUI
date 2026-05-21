@@ -20,8 +20,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@platform/design-system": ["../Platform.DesignUI/dist/types/index.d.ts"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

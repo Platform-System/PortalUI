@@ -4,7 +4,7 @@ import I18nProvider from "@/core/providers/I18nProvider";
 import { defaultLocale } from "@/i18n/config";
 import viMessages from "../../messages/vi.json";
 import { AbstractIntlMessages } from "next-intl";
-import { ThemeProvider } from "@platform/design-system";
+import { ThemeProvider } from "@platform/design-system/ThemeProvider";
 import "./globals.css";
 import Link from "next/link";
 import { GlobalLoadingBarWrapper } from "@/components/portal/GlobalLoadingBarWrapper";
