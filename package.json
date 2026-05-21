@@ -10,7 +10,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@platform/design-system": "https://codeload.github.com/Platform-System/Platform.DesignUI/tar.gz/refs/heads/main",
+    "@platform/design-system": "git+https://github.com/Platform-System/Platform.DesignUI.git#main",
     "framer-motion": "^12.38.0",
     "lucide-react": "^1.16.0",
     "next": "16.2.6",
