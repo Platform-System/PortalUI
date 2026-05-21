@@ -2,12 +2,15 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
-  Store, Users, Shield, ArrowRight, Sparkles, Globe, 
+  Users, ArrowRight, Globe, 
   ShoppingBag, Zap, Cpu, CreditCard, Palette 
 } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { useRef, useState, useEffect } from "react";
+import { useMemo, useRef } from "react";
+import { PortalEcosystemGrid } from "@/components/portal/PortalEcosystemGrid";
+import { PortalPlatformCard } from "@/components/portal/PortalPlatformCard";
+import { PortalSectionIntro } from "@/components/portal/PortalSectionIntro";
 
 /**
  * Nyxoris Portal: Futuristic Technology Ecosystem Homepage.
@@ -32,18 +35,18 @@ export default function Home() {
     { name: "Payments", icon: <CreditCard className="w-4 h-4" />, color: "bg-indigo-50/50" },
   ];
 
-  // Fix Hydration Mismatch by generating random particles only on client
-  const [particles, setParticles] = useState<any[]>([]);
-  useEffect(() => {
-    setParticles([...Array(15)].map((_, i) => ({
-      id: i,
-      x: Math.random() * 60 - 30,
-      duration: 5 + Math.random() * 5,
-      delay: Math.random() * 5,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-    })));
-  }, []);
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 15 }, (_, i) => ({
+        id: i,
+        x: ((i * 17) % 60) - 30,
+        duration: 5 + (i % 5),
+        delay: (i % 5) * 0.6,
+        left: `${(i * 13) % 100}%`,
+        top: `${(i * 19) % 100}%`,
+      })),
+    []
+  );
 
   return (
     <main ref={containerRef} className="flex-1 flex flex-col items-center">
@@ -95,7 +98,7 @@ export default function Home() {
             className="flex items-center justify-center gap-4 mb-8"
           >
             <div className="h-px w-10 bg-primary/20" />
-            <span className="text-[10px] font-bold tracking-[0.7em] uppercase text-primary/70">
+            <span className="ds-uppercase-eyebrow text-primary/70">
               {t("welcome")}
             </span>
             <div className="h-px w-10 bg-primary/20" />
@@ -106,7 +109,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-              className="text-[10rem] md:text-[14rem] font-serif font-black tracking-[-0.04em] leading-[0.8] hero-title relative z-10"
+              className="text-[10rem] md:text-[14rem] ds-hero-title relative z-10"
             >
               NYXORIS
             </motion.h1>
@@ -145,7 +148,7 @@ export default function Home() {
             </Link>
             <Link 
               href="https://merchant.nyxoris.com" 
-              className="glass-card px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 transition-all border border-slate-200"
+              className="ds-glass-card px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 transition-all border border-slate-200"
             >
               {t("hero.ctaStore")}
             </Link>
@@ -167,150 +170,82 @@ export default function Home() {
       {/* --- PLATFORM PORTALS SECTION --- */}
       <section className="w-full max-w-7xl px-6 py-32 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Store Portal Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Link href="https://merchant.nyxoris.com" className="group relative block h-[580px]">
-              <div className="glass-card glass-card-hover p-12 rounded-[3.5rem] h-full flex flex-col relative overflow-hidden border-white/50">
-                <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:opacity-10 transition-opacity">
-                  <ShoppingBag className="w-56 h-56 -rotate-12" />
-                </div>
-                
-                <div className="mb-10 relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-green-600/70">
-                      {t("status.online")}
-                    </span>
-                  </div>
-                  <h2 className="text-5xl font-serif font-bold text-slate-900 mb-4 tracking-tight">{t("platforms.store.title")}</h2>
-                  <p className="text-primary text-[10px] font-black uppercase tracking-[0.3em] italic opacity-80">
-                    {t("platforms.store.subtitle")}
-                  </p>
-                </div>
-
-                <p className="text-lg text-slate-500 font-light leading-relaxed max-w-sm flex-1 relative z-10">
-                  {t("platforms.store.description")}
-                </p>
-
-                <div className="mt-12 flex items-end justify-between relative z-10">
-                  <div className="space-y-4">
-                    <div className="flex gap-1.5">
-                      {[1,2,3].map(i => <div key={i} className="w-10 h-1 bg-indigo-100/50 rounded-full" />)}
-                    </div>
-                    <span className="inline-block px-5 py-2 rounded-full bg-indigo-50/50 text-[10px] font-bold text-indigo-500 tracking-widest uppercase border border-indigo-100/50">
-                      {t("platforms.store.highlight")}
-                    </span>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 text-slate-900 group-hover:gap-6 transition-all duration-700 font-bold uppercase tracking-[0.3em] text-[11px]">
-                    <span>{t("platforms.store.cta")}</span>
-                    <ArrowRight className="w-5 h-5 text-primary" />
-                  </div>
-                </div>
+          <PortalPlatformCard
+            href="https://merchant.nyxoris.com"
+            title={t("platforms.store.title")}
+            subtitle={t("platforms.store.subtitle")}
+            description={t("platforms.store.description")}
+            statusLabel={t("status.online")}
+            statusTone="online"
+            ctaLabel={t("platforms.store.cta")}
+            ctaIcon={<ArrowRight className="h-5 w-5 text-primary" />}
+            motionFrom="left"
+            decorativeVisual={
+              <div className="absolute top-0 right-0 p-12 opacity-5 transition-opacity group-hover:opacity-10">
+                <ShoppingBag className="h-56 w-56 -rotate-12" />
               </div>
-            </Link>
-          </motion.div>
-
-          {/* Social Portal Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <Link href="#" className="group relative block h-[580px]">
-              <div className="glass-card glass-card-hover p-12 rounded-[3.5rem] h-full flex flex-col relative overflow-hidden border-white/50">
-                <div className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center opacity-[0.02] group-hover:opacity-[0.05] transition-opacity">
-                  <div className="w-[500px] h-[500px] rounded-full border border-primary animate-[spin_25s_linear_infinite]" />
-                  <div className="absolute w-[350px] h-[350px] rounded-full border border-primary/40 animate-[spin_20s_linear_infinite_reverse]" />
+            }
+            footerVisual={
+              <div className="space-y-4">
+                <div className="flex gap-1.5">
+                  {[1, 2, 3].map((item) => (
+                    <div key={item} className="h-1 w-10 rounded-full bg-indigo-100/50" />
+                  ))}
                 </div>
-
-                <div className="mb-10 relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-2 h-2 rounded-full bg-slate-200" />
-                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-400">
-                      {t("status.upcoming")}
-                    </span>
-                  </div>
-                  <h2 className="text-5xl font-serif font-bold text-slate-900 mb-4 tracking-tight">{t("platforms.social.title")}</h2>
-                  <p className="text-primary text-[10px] font-black uppercase tracking-[0.3em] italic opacity-80">
-                    {t("platforms.social.subtitle")}
-                  </p>
-                </div>
-
-                <p className="text-lg text-slate-500 font-light leading-relaxed max-w-sm flex-1 relative z-10">
-                  {t("platforms.social.description")}
-                </p>
-
-                <div className="mt-12 flex items-end justify-between relative z-10">
-                  <div className="space-y-4 text-left">
-                    <div className="flex -space-x-2.5 overflow-hidden">
-                      {[1,2,3,4].map(i => (
-                        <div key={i} className="inline-block h-8 w-8 rounded-full ring-2 ring-white/50 bg-slate-50 flex items-center justify-center">
-                           <Users className="w-3.5 h-3.5 text-slate-300" />
-                        </div>
-                      ))}
-                    </div>
-                    <span className="inline-block px-5 py-2 rounded-full bg-slate-50/50 text-[10px] font-bold text-slate-400 tracking-widest uppercase border border-slate-100">
-                      {t("platforms.social.highlight")}
-                    </span>
-                  </div>
-                  
-                  <div className="flex items-center gap-3 text-slate-400 font-bold uppercase tracking-[0.3em] text-[11px]">
-                    <span>{t("platforms.social.cta")}</span>
-                    <Zap className="w-4 h-4 opacity-50" />
-                  </div>
-                </div>
+                <span className="inline-block rounded-full border border-indigo-100/50 bg-indigo-50/50 px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-indigo-500">
+                  {t("platforms.store.highlight")}
+                </span>
               </div>
-            </Link>
-          </motion.div>
+            }
+          />
+
+          <PortalPlatformCard
+            href="#"
+            title={t("platforms.social.title")}
+            subtitle={t("platforms.social.subtitle")}
+            description={t("platforms.social.description")}
+            statusLabel={t("status.upcoming")}
+            statusTone="upcoming"
+            ctaLabel={t("platforms.social.cta")}
+            ctaIcon={<Zap className="h-4 w-4 opacity-50" />}
+            motionFrom="right"
+            decorativeVisual={
+              <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.02] transition-opacity group-hover:opacity-[0.05] pointer-events-none">
+                <div className="h-[500px] w-[500px] animate-[spin_25s_linear_infinite] rounded-full border border-primary" />
+                <div className="absolute h-[350px] w-[350px] animate-[spin_20s_linear_infinite_reverse] rounded-full border border-primary/40" />
+              </div>
+            }
+            footerVisual={
+              <div className="space-y-4 text-left">
+                <div className="flex -space-x-2.5 overflow-hidden">
+                  {[1, 2, 3, 4].map((item) => (
+                    <div
+                      key={item}
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 ring-2 ring-white/50"
+                    >
+                      <Users className="h-3.5 w-3.5 text-slate-300" />
+                    </div>
+                  ))}
+                </div>
+                <span className="inline-block rounded-full border border-slate-100 bg-slate-50/50 px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                  {t("platforms.social.highlight")}
+                </span>
+              </div>
+            }
+          />
         </div>
       </section>
 
       {/* --- ECOSYSTEM PREVIEW SECTION --- */}
       <section className="w-full py-40 bg-slate-50/30">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-24"
-          >
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.5em] text-primary mb-6 italic opacity-70">
-              ECOSYSTEM INTEGRATION
-            </h3>
-            <h2 className="text-5xl md:text-6xl font-serif font-bold text-slate-950 mb-8 tracking-tight">
-              {t("ecosystem.title")}
-            </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto font-light text-lg">
-              {t("ecosystem.subtitle")}
-            </p>
-          </motion.div>
+          <PortalSectionIntro
+            eyebrow="ECOSYSTEM INTEGRATION"
+            title={t("ecosystem.title")}
+            description={t("ecosystem.subtitle")}
+          />
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {ecosystemItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className={`p-10 rounded-[2.5rem] ${item.color} border border-white/80 flex flex-col items-center gap-5 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 cursor-default group`}
-              >
-                <div className="p-4 rounded-2xl bg-white text-primary shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                  {item.icon}
-                </div>
-                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-slate-500 group-hover:text-slate-900 transition-colors">
-                  {item.name}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+          <PortalEcosystemGrid items={ecosystemItems} />
 
           <motion.div 
             initial={{ opacity: 0 }}

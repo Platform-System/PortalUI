@@ -15,6 +15,7 @@ type LinkProps = Omit<React.ComponentProps<typeof NextLink>, 'href'> &
 
 export function Link(props: LinkProps) {
   const { href, locale: _locale, ...rest } = props;
+  void _locale;
   return React.createElement(NextLink, { 
     href, 
     prefetch: props.prefetch ?? false,

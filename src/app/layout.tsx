@@ -4,8 +4,10 @@ import I18nProvider from "@/core/providers/I18nProvider";
 import { defaultLocale } from "@/i18n/config";
 import viMessages from "../../messages/vi.json";
 import { AbstractIntlMessages } from "next-intl";
+import { ThemeProvider } from "@platform/design-system";
 import "./globals.css";
 import Link from "next/link";
+import { GlobalLoadingBarWrapper } from "@/components/portal/GlobalLoadingBarWrapper";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -57,7 +59,7 @@ export default function RootLayout({
 
         {/* Premium Navigation Bar */}
         <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
-          <nav className="glass-card px-8 py-3 rounded-full flex items-center gap-12 border border-white/40 shadow-xl shadow-slate-200/50">
+          <nav className="ds-glass-card px-8 py-3 rounded-full flex items-center gap-12 border border-white/40 shadow-xl shadow-slate-200/50">
             <Link href="/" className="text-xl font-serif font-black tracking-tighter hover:opacity-70 transition-opacity">
               NYXORIS
             </Link>
@@ -80,9 +82,12 @@ export default function RootLayout({
         </header>
 
         <div className="relative z-10 flex min-h-screen w-full flex-col">
-          <I18nProvider locale={defaultLocale} messages={viMessages as unknown as AbstractIntlMessages}>
-            {children}
-          </I18nProvider>
+          <ThemeProvider defaultTheme="light">
+            <I18nProvider locale={defaultLocale} messages={viMessages as unknown as AbstractIntlMessages}>
+              <GlobalLoadingBarWrapper />
+              {children}
+            </I18nProvider>
+          </ThemeProvider>
         </div>
       </body>
     </html>
