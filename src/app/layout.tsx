@@ -5,6 +5,7 @@ import { defaultLocale } from "@/i18n/config";
 import viMessages from "../../messages/vi.json";
 import { AbstractIntlMessages } from "next-intl";
 import { ThemeProvider } from "@platform/design-system/ThemeProvider";
+import { BRAND_METADATA, BRAND_NAME } from "@platform/design-system";
 import "./globals.css";
 import Link from "next/link";
 import { GlobalLoadingBarWrapper } from "@/components/portal/GlobalLoadingBarWrapper";
@@ -28,7 +29,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "NYXORIS | Universe Portal",
+  title: `${BRAND_METADATA.title} | Universe Portal`,
   description: "The gateway to the Nyxoris digital ecosystem.",
 };
 
@@ -40,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <body
-        className={`${plusJakarta.variable} ${geistMono.variable} ${playfair.variable} antialiased min-h-screen bg-white text-foreground relative overflow-x-hidden`}
+        className={`${plusJakarta.variable} ${geistMono.variable} ${playfair.variable} antialiased min-h-screen bg-background text-foreground relative overflow-x-hidden`}
       >
         {/* Cinematic Background Atmosphere */}
         <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(248,250,252,0.8)_0%,rgba(255,255,255,1)_50%)]" />
@@ -59,9 +60,9 @@ export default function RootLayout({
 
         {/* Premium Navigation Bar */}
         <header className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
-          <nav className="ds-glass-card px-8 py-3 rounded-full flex items-center gap-12 border border-white/40 shadow-xl shadow-slate-200/50">
+          <nav className="ds-glass-card px-8 py-3 rounded-full flex items-center gap-12 border border-white/40 shadow-xl shadow-[rgb(var(--store-border-rgb)/0.5)]">
             <Link href="/" className="text-xl font-serif font-black tracking-tighter hover:opacity-70 transition-opacity">
-              NYXORIS
+              {BRAND_NAME}
             </Link>
             
             <div className="hidden md:flex items-center gap-8">
@@ -74,7 +75,7 @@ export default function RootLayout({
 
             <Link 
               href="https://merchant.nyxoris.com" 
-              className="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2.5 rounded-full hover:scale-105 transition-transform shadow-lg shadow-indigo-500/25"
+              className="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-6 py-2.5 rounded-full hover:scale-105 transition-transform shadow-lg shadow-[rgb(var(--store-accent-rgb)/0.25)]"
             >
               Launch Merchant
             </Link>

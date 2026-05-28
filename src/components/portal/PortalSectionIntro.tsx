@@ -20,10 +20,10 @@ export function PortalSectionIntro({ eyebrow, title, description }: PortalSectio
       <h3 className="mb-6 text-[11px] font-bold uppercase tracking-[0.5em] text-primary italic opacity-70">
         {eyebrow}
       </h3>
-      <h2 className="mb-8 font-serif text-5xl font-bold tracking-tight text-slate-950 md:text-6xl">
+      <h2 className="mb-8 font-serif text-5xl font-bold tracking-tight text-foreground md:text-6xl">
         {title}
       </h2>
-      <p className="mx-auto max-w-2xl text-lg font-light text-slate-500">
+      <p className="mx-auto max-w-2xl text-lg font-light text-muted-foreground">
         {description}
       </p>
     </motion.div>

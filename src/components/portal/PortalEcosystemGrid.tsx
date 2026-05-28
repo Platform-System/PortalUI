@@ -23,12 +23,12 @@ export function PortalEcosystemGrid({ items }: PortalEcosystemGridProps) {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className={`group flex cursor-default flex-col items-center gap-5 rounded-[2.5rem] border border-white/80 p-10 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 ${item.color}`}
+          className={`group flex cursor-default flex-col items-center gap-5 rounded-[2.5rem] border border-white/80 p-10 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-black/8 dark:hover:shadow-white/[0.04] ${item.color}`}
         >
           <div className="rounded-2xl bg-white p-4 text-primary shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
             {item.icon}
           </div>
-          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-slate-500 transition-colors group-hover:text-slate-900">
+          <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground transition-colors group-hover:text-foreground">
             {item.name}
           </span>
         </motion.div>

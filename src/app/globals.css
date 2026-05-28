@@ -1,21 +1,10 @@
 @import "tailwindcss";
 @import "@platform/design-system/index.css";
 
-:root {
-  /* Nyxoris Platform - Modern Winter/Cosmic Theme (Đồng bộ từ StoreUI) */
-  --background: #FFFFFF; 
-  --foreground: #020617; 
-  --card: #FFFFFF;
-  --popover: #FFFFFF;
-  
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-bg: rgba(255, 255, 255, 0.7);
-}
-
 @theme {
   --font-sans: var(--font-plus-jakarta);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-playfair);
+  --font-serif: var(--font-plus-jakarta);
 
   --color-primary: rgb(var(--store-accent-rgb));
   --color-secondary: rgb(var(--store-surface-strong-rgb));
@@ -35,6 +24,8 @@
   }
 }
 
+
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -48,17 +39,17 @@ body {
 
 
   .portal-accent-glow {
-    background: radial-gradient(circle at center, rgb(var(--store-accent-rgb) / 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at center, rgb(var(--store-accent-rgb) / 0.06) 0%, transparent 70%);
   }
   
   .light-beam {
     position: absolute;
     width: 200px;
     height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+    background: linear-gradient(to right, transparent, var(--overlay-light-beam), transparent);
     transform: skewX(-15deg);
     pointer-events: none;
-    filter: blur(40px);
+    filter: blur(52px);
   }
 }
 

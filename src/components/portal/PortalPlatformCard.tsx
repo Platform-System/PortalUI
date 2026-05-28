@@ -34,12 +34,12 @@ export function PortalPlatformCard({
   const statusClasses =
     statusTone === "online"
       ? {
-          dot: "bg-green-500 animate-pulse",
-          text: "text-green-600/70",
+          dot: "bg-foreground animate-pulse",
+          text: "text-foreground/55",
         }
       : {
-          dot: "bg-slate-200",
-          text: "text-slate-400",
+          dot: "bg-border",
+          text: "text-muted-foreground",
         }
 
   return (
@@ -60,20 +60,20 @@ export function PortalPlatformCard({
                 {statusLabel}
               </span>
             </div>
-            <h2 className="mb-4 font-serif text-5xl font-bold tracking-tight text-slate-900">{title}</h2>
+            <h2 className="mb-4 font-serif text-5xl font-bold tracking-tight text-foreground">{title}</h2>
             <p className="text-[10px] font-black uppercase tracking-[0.3em] italic text-primary opacity-80">
               {subtitle}
             </p>
           </div>
 
-          <p className="relative z-10 max-w-sm flex-1 text-lg font-light leading-relaxed text-slate-500">
+          <p className="relative z-10 max-w-sm flex-1 text-lg font-light leading-relaxed text-muted-foreground">
             {description}
           </p>
 
           <div className="relative z-10 mt-12 flex items-end justify-between">
             {footerVisual}
 
-            <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-slate-900 transition-all duration-700 group-hover:gap-6">
+            <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.3em] text-foreground transition-all duration-700 group-hover:gap-6">
               <span>{ctaLabel}</span>
               {ctaIcon}
             </div>

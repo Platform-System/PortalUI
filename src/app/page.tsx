@@ -11,6 +11,7 @@ import { useMemo, useRef } from "react";
 import { PortalEcosystemGrid } from "@/components/portal/PortalEcosystemGrid";
 import { PortalPlatformCard } from "@/components/portal/PortalPlatformCard";
 import { PortalSectionIntro } from "@/components/portal/PortalSectionIntro";
+import { BRAND_NAME } from "@platform/design-system";
 
 /**
  * Nyxoris Portal: Futuristic Technology Ecosystem Homepage.
@@ -28,11 +29,11 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   const ecosystemItems = [
-    { name: "Merchant", icon: <ShoppingBag className="w-4 h-4" />, color: "bg-indigo-50/50" },
-    { name: "Social", icon: <Users className="w-4 h-4" />, color: "bg-slate-50/50" },
-    { name: "Creator", icon: <Palette className="w-4 h-4" />, color: "bg-indigo-50/50" },
-    { name: "AI Studio", icon: <Cpu className="w-4 h-4" />, color: "bg-slate-50/50" },
-    { name: "Payments", icon: <CreditCard className="w-4 h-4" />, color: "bg-indigo-50/50" },
+    { name: "Merchant", icon: <ShoppingBag className="w-4 h-4" />, color: "bg-[rgb(var(--store-accent-rgb)/0.08)]" },
+    { name: "Social", icon: <Users className="w-4 h-4" />, color: "bg-[rgb(var(--store-surface-rgb)/0.78)]" },
+    { name: "Creator", icon: <Palette className="w-4 h-4" />, color: "bg-[rgb(var(--store-accent-rgb)/0.08)]" },
+    { name: "AI Studio", icon: <Cpu className="w-4 h-4" />, color: "bg-[rgb(var(--store-surface-rgb)/0.78)]" },
+    { name: "Payments", icon: <CreditCard className="w-4 h-4" />, color: "bg-[rgb(var(--store-accent-rgb)/0.08)]" },
   ];
 
   const particles = useMemo(
@@ -111,7 +112,7 @@ export default function Home() {
               transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
               className="text-[10rem] md:text-[14rem] ds-hero-title relative z-10"
             >
-              NYXORIS
+              {BRAND_NAME.toUpperCase()}
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -119,7 +120,7 @@ export default function Home() {
               transition={{ duration: 2.5, delay: 0.5 }}
               className="absolute inset-0 -z-10 flex items-center justify-center select-none"
             >
-              <span className="text-[18rem] md:text-[24rem] font-serif font-black tracking-tighter text-indigo-950">
+              <span className="text-[18rem] md:text-[24rem] font-serif font-black tracking-tighter text-foreground/8">
                 NYX
               </span>
             </motion.div>
@@ -129,7 +130,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.8 }}
-            className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed tracking-wide px-6 mb-16"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed tracking-wide px-6 mb-16"
           >
             {t("description")}
           </motion.p>
@@ -142,13 +143,13 @@ export default function Home() {
           >
             <Link 
               href="#" 
-              className="bg-primary text-white text-[11px] font-bold uppercase tracking-widest px-10 py-4 rounded-full hover:scale-105 transition-transform shadow-xl shadow-indigo-500/20"
+              className="bg-primary text-white text-[11px] font-bold uppercase tracking-widest px-10 py-4 rounded-full hover:scale-105 transition-transform shadow-xl shadow-[rgb(var(--store-accent-rgb)/0.24)]"
             >
               {t("hero.ctaExplore")}
             </Link>
             <Link 
               href="https://merchant.nyxoris.com" 
-              className="ds-glass-card px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest text-slate-700 hover:bg-slate-50 transition-all border border-slate-200"
+              className="ds-glass-card px-10 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest text-foreground hover:bg-secondary transition-all border border-border"
             >
               {t("hero.ctaStore")}
             </Link>
@@ -189,10 +190,10 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex gap-1.5">
                   {[1, 2, 3].map((item) => (
-                    <div key={item} className="h-1 w-10 rounded-full bg-indigo-100/50" />
+                    <div key={item} className="h-1 w-10 rounded-full bg-[rgb(var(--store-accent-rgb)/0.15)]" />
                   ))}
                 </div>
-                <span className="inline-block rounded-full border border-indigo-100/50 bg-indigo-50/50 px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-indigo-500">
+                <span className="inline-block rounded-full border border-[rgb(var(--store-accent-rgb)/0.18)] bg-[rgb(var(--store-accent-rgb)/0.08)] px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-primary">
                   {t("platforms.store.highlight")}
                 </span>
               </div>
@@ -221,13 +222,13 @@ export default function Home() {
                   {[1, 2, 3, 4].map((item) => (
                     <div
                       key={item}
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 ring-2 ring-white/50"
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-card ring-2 ring-white/50"
                     >
-                      <Users className="h-3.5 w-3.5 text-slate-300" />
+                      <Users className="h-3.5 w-3.5 text-muted-foreground/60" />
                     </div>
                   ))}
                 </div>
-                <span className="inline-block rounded-full border border-slate-100 bg-slate-50/50 px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                <span className="inline-block rounded-full border border-border bg-secondary/65 px-5 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                   {t("platforms.social.highlight")}
                 </span>
               </div>
@@ -237,7 +238,7 @@ export default function Home() {
       </section>
 
       {/* --- ECOSYSTEM PREVIEW SECTION --- */}
-      <section className="w-full py-40 bg-slate-50/30">
+      <section className="w-full py-40 bg-secondary/40">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <PortalSectionIntro
             eyebrow="ECOSYSTEM INTEGRATION"
@@ -252,8 +253,8 @@ export default function Home() {
             whileInView={{ opacity: 0.3 }}
             className="mt-40 flex flex-col items-center gap-6"
           >
-            <Globe className="w-5 h-5 text-slate-400" />
-            <p className="text-[10px] font-bold tracking-[0.5em] uppercase text-slate-400">
+            <Globe className="w-5 h-5 text-muted-foreground" />
+            <p className="text-[10px] font-bold tracking-[0.5em] uppercase text-muted-foreground">
               {t("unifiedNetwork")}
             </p>
           </motion.div>
@@ -261,21 +262,21 @@ export default function Home() {
       </section>
 
       {/* --- PREMIUM FOOTER --- */}
-      <footer className="w-full bg-white border-t border-slate-100 px-6 pt-24 pb-12">
+      <footer className="w-full bg-card border-t border-border px-6 pt-24 pb-12">
         <div className="max-w-7xl mx-auto flex flex-col items-center gap-20">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 w-full text-center lg:text-left">
             <div className="lg:col-span-2 space-y-6">
-              <h4 className="text-2xl font-serif font-black tracking-tighter">NYXORIS</h4>
-              <p className="text-slate-400 font-light text-sm max-w-sm mx-auto lg:mx-0 leading-relaxed">
+              <h4 className="text-2xl font-serif font-black tracking-tighter">{BRAND_NAME.toUpperCase()}</h4>
+              <p className="text-muted-foreground font-light text-sm max-w-sm mx-auto lg:mx-0 leading-relaxed">
                 {t("footer.description")}
               </p>
             </div>
             
             <div className="space-y-6">
-              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900">Discover</h5>
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground">Discover</h5>
               <div className="flex flex-col gap-3">
-                {[t("footer.links.platforms"), t("footer.links.vision"), t("footer.links.ecosystem")].map(link => (
-                  <Link key={link} href="#" className="text-sm text-slate-400 hover:text-primary transition-colors font-light">
+                {[t("footer.links.platforms"), t("footer.links.vision"), t("footer.links.ecosystem")].map((link) => (
+                  <Link key={link} href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
                     {link}
                   </Link>
                 ))}
@@ -283,10 +284,10 @@ export default function Home() {
             </div>
 
             <div className="space-y-6">
-              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900">Legal</h5>
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.2em] text-foreground">Legal</h5>
               <div className="flex flex-col gap-3">
-                {[t("footer.links.privacy"), "Terms of Service", "Cookie Policy"].map(link => (
-                  <Link key={link} href="#" className="text-sm text-slate-400 hover:text-primary transition-colors font-light">
+                {[t("footer.links.privacy"), "Terms of Service", "Cookie Policy"].map((link) => (
+                  <Link key={link} href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors font-light">
                     {link}
                   </Link>
                 ))}
@@ -294,12 +295,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-full flex flex-col items-center gap-10 pt-12 border-t border-slate-50">
-             <div className="text-[9px] font-black tracking-[0.8em] uppercase text-slate-200">
+          <div className="w-full flex flex-col items-center gap-10 pt-12 border-t border-border/60">
+             <div className="text-[9px] font-black tracking-[0.8em] uppercase text-muted-foreground/35">
                {t("footer.tagline")}
              </div>
-             <div className="text-[9px] tracking-[0.4em] uppercase font-bold text-slate-300">
-               &copy; 2026 NYXORIS RADIANCE . ALL RIGHTS RESERVED
+             <div className="text-[9px] tracking-[0.4em] uppercase font-bold text-muted-foreground/55">
+               &copy; 2026 {BRAND_NAME.toUpperCase()} RADIANCE . ALL RIGHTS RESERVED
              </div>
           </div>
         </div>
