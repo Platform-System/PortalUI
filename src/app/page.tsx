@@ -11,7 +11,7 @@ import { useMemo, useRef } from "react";
 import { PortalEcosystemGrid } from "@/components/portal/PortalEcosystemGrid";
 import { PortalPlatformCard } from "@/components/portal/PortalPlatformCard";
 import { PortalSectionIntro } from "@/components/portal/PortalSectionIntro";
-import { BRAND_NAME } from "@platform/design-system";
+import { BRAND_NAME } from "@platform/design-ui";
 
 /**
  * Nyxoris Portal: Futuristic Technology Ecosystem Homepage.
