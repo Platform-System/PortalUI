@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@platform/design-system/index.css";
+@import "@platform-system/design-ui/index.css";
 
 @theme {
   --font-sans: var(--font-plus-jakarta);
