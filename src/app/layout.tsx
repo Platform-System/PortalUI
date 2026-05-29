@@ -7,8 +7,8 @@ import { AbstractIntlMessages } from "next-intl";
 import { ThemeProvider } from "@platform-system/design-ui/theme-provider";
 import { BRAND_METADATA } from "@platform-system/design-ui/branding";
 import "./globals.css";
-import { GlobalLoadingBarWrapper } from "@/components/portal/GlobalLoadingBarWrapper";
 import { Header } from "@/components/portal/Header";
+import { AmbientParticles } from "@/components/portal/AmbientParticles";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -29,7 +29,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: `${BRAND_METADATA.title} | Universe Portal`,
+  title: BRAND_METADATA.title,
   description: "The gateway to the Nyxoris digital ecosystem.",
 };
 
@@ -52,6 +52,7 @@ export default function RootLayout({
             <div className="pointer-events-none fixed top-[-20%] left-[-10%] z-0 h-[70%] w-[70%] rounded-full bg-[rgb(var(--store-accent-rgb)/0.02)] dark:bg-[rgb(var(--store-accent-rgb)/0.04)] blur-[120px] opacity-60 transition-opacity duration-300" />
             <div className="pointer-events-none fixed bottom-[-10%] right-[-5%] z-0 h-[50%] w-[50%] rounded-full bg-indigo-500/2 dark:bg-indigo-500/5 blur-[100px] opacity-40 transition-opacity duration-300" />
             <div className="pointer-events-none fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 h-[80%] w-[80%] bg-[radial-gradient(circle,rgba(99,102,241,0.01)_0%,transparent_70%)] dark:bg-[radial-gradient(circle,rgba(99,102,241,0.015)_0%,transparent_70%)] transition-opacity duration-300" />
+            <AmbientParticles />
 
             {/* Animated Light Beams */}
             <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
@@ -63,8 +64,7 @@ export default function RootLayout({
             {/* Premium Navigation Bar */}
             <Header />
 
-            <div className="relative z-10 flex min-h-screen w-full flex-col pt-24">
-              <GlobalLoadingBarWrapper />
+            <div className="relative z-10 flex min-h-screen w-full flex-col pt-0">
               {children}
             </div>
           </I18nProvider>

@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { 
   ArrowRight, ShoppingBag, Users, Film, Zap, Globe, Plus
 } from "lucide-react";
@@ -74,157 +74,170 @@ export default function Home() {
             transition={{ duration: 1, delay: 0.6 }}
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto"
           >
-            <Link 
+            <a 
               href="#platforms"
               className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-semibold px-8 py-3.5 rounded-full text-xs uppercase tracking-wider transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] text-center"
             >
               Khám phá nền tảng
-            </Link>
-            <Link 
-              href={ACTIVE_PLATFORM_URL}
-              className="inline-flex items-center justify-center gap-2 bg-muted hover:bg-muted/80 text-foreground border border-border font-semibold px-8 py-3.5 rounded-full text-xs uppercase tracking-wider transition-all hover:scale-105 active:scale-[0.98] text-center"
-            >
-              Truy cập nền tảng
-            </Link>
+            </a>
           </motion.div>
         </div>
 
         {/* Right column: Abstract UI Cards Visual */}
         <div className="flex-1 w-full max-w-lg relative h-[450px] flex items-center justify-center z-10 select-none">
-          {/* Orbital indicators */}
-          <div className="absolute w-[290px] h-[290px] border border-primary/10 rounded-full pointer-events-none z-0 animate-[spin_50s_linear_infinite]" />
-          <div className="absolute w-[380px] h-[380px] border border-dashed border-border/20 rounded-full pointer-events-none z-0 animate-[spin_80s_linear_infinite_reverse]" />
-          
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--store-accent-rgb),0.05)_0%,transparent_70%)] pointer-events-none" />
-          
-          {/* Animated SVG Connection Lines */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 450 450" fill="none">
-            {/* Center node: (225, 225) */}
-            {/* To Card 1: (225 - 110, 225 - 110) = (115, 115) */}
-            <motion.path 
-              d="M 225 225 L 115 115" 
-              className="stroke-primary/25 dark:stroke-primary/35" 
-              strokeWidth="1.5" 
-              strokeDasharray="4 4"
-              animate={{ strokeDashoffset: [0, -20] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-            />
-            {/* To Card 2: (225 + 110, 225 - 80) = (335, 145) */}
-            <motion.path 
-              d="M 225 225 L 335 145" 
-              className="stroke-primary/25 dark:stroke-primary/35" 
-              strokeWidth="1.5" 
-              strokeDasharray="4 4"
-              animate={{ strokeDashoffset: [0, -20] }}
-              transition={{ repeat: Infinity, duration: 2.5, ease: "linear" }}
-            />
-            {/* To Card 3: (225 - 20, 225 + 130) = (205, 355) */}
-            <motion.path 
-              d="M 225 225 L 205 355" 
-              className="stroke-primary/25 dark:stroke-primary/35" 
-              strokeWidth="1.5" 
-              strokeDasharray="4 4"
-              animate={{ strokeDashoffset: [0, -20] }}
-              transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-            />
-          </svg>
+            {/* Orbital indicators */}
+            <div className="absolute w-[290px] h-[290px] border border-primary/10 rounded-full pointer-events-none z-0 animate-[spin_50s_linear_infinite]" />
+            <div className="absolute w-[380px] h-[380px] border border-dashed border-border/20 rounded-full pointer-events-none z-0 animate-[spin_80s_linear_infinite_reverse]" />
+            
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--store-accent-rgb),0.05)_0%,transparent_70%)] pointer-events-none" />
+            
+            {/* Animated SVG Connection Lines */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 450 450" fill="none">
+              {/* Center node: (225, 225) */}
+              {/* To Card 1: (225 - 110, 225 - 110) = (115, 115) */}
+              <motion.path 
+                className="stroke-primary/25 dark:stroke-primary/35" 
+                strokeWidth="1.5" 
+                strokeDasharray="4 4"
+                animate={{ 
+                  strokeDashoffset: [0, -20],
+                  d: ["M 225 225 L 123 115", "M 225 225 L 115 123", "M 225 225 L 107 115", "M 225 225 L 115 107", "M 225 225 L 123 115"]
+                }}
+                transition={{ 
+                  strokeDashoffset: { repeat: Infinity, duration: 2, ease: "linear" },
+                  d: { repeat: Infinity, duration: 6, ease: "linear" }
+                }}
+              />
+              {/* To Card 2: (225 + 110, 225 - 80) = (335, 145) */}
+              <motion.path 
+                className="stroke-primary/25 dark:stroke-primary/35" 
+                strokeWidth="1.5" 
+                strokeDasharray="4 4"
+                animate={{ 
+                  strokeDashoffset: [0, -20],
+                  d: ["M 225 225 L 343 145", "M 225 225 L 335 153", "M 225 225 L 327 145", "M 225 225 L 335 137", "M 225 225 L 343 145"]
+                }}
+                transition={{ 
+                  strokeDashoffset: { repeat: Infinity, duration: 2.5, ease: "linear" },
+                  d: { repeat: Infinity, duration: 6, ease: "linear" }
+                }}
+              />
+              {/* To Card 3: (225 - 20, 225 + 130) = (205, 355) */}
+              <motion.path 
+                className="stroke-primary/25 dark:stroke-primary/35" 
+                strokeWidth="1.5" 
+                strokeDasharray="4 4"
+                animate={{ 
+                  strokeDashoffset: [0, -20],
+                  d: ["M 225 225 L 213 355", "M 225 225 L 205 363", "M 225 225 L 197 355", "M 225 225 L 205 347", "M 225 225 L 213 355"]
+                }}
+                transition={{ 
+                  strokeDashoffset: { repeat: Infinity, duration: 3, ease: "linear" },
+                  d: { repeat: Infinity, duration: 6, ease: "linear" }
+                }}
+              />
+            </svg>
 
-          {/* Main Central Card */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
-            transition={{ 
-              scale: { duration: 1 },
-              opacity: { duration: 1 },
-              y: { repeat: Infinity, duration: 6, ease: "easeInOut" }
-            }}
-            whileHover={{ scale: 1.03 }}
-            className="w-64 p-6 bg-card/90 backdrop-blur-md border border-primary/20 dark:border-primary/35 rounded-3xl shadow-2xl relative z-20 text-center flex flex-col items-center justify-center hover:border-primary/40 hover:shadow-primary/5 transition-colors"
-          >
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3">
-              <Globe className="w-6 h-6 animate-pulse" />
-            </div>
-            <h3 className="text-xl font-bold tracking-tight text-foreground">Nyxoris</h3>
-            <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Hệ sinh thái số</span>
-          </motion.div>
+            {/* Main Central Card */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }}
+              transition={{ 
+                scale: { duration: 1 },
+                opacity: { duration: 1 },
+                y: { repeat: Infinity, duration: 6, ease: "easeInOut" }
+              }}
+              whileHover={{ scale: 1.03 }}
+              style={{ transform: "translateZ(20px)" }}
+              className="w-64 p-6 bg-card/90 backdrop-blur-md border border-primary/20 dark:border-primary/35 rounded-3xl shadow-2xl relative z-20 text-center flex flex-col items-center justify-center hover:border-primary/40 hover:shadow-primary/5 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-3">
+                <Globe className="w-6 h-6 animate-pulse" />
+              </div>
+              <h3 className="text-xl font-bold tracking-tight text-foreground">Nyxoris</h3>
+              <span className="text-[9px] uppercase tracking-wider text-muted-foreground mt-1">Hệ sinh thái số</span>
+            </motion.div>
 
-          {/* Connected Card 1: Nền tảng bán hàng */}
-          <motion.div 
-            initial={{ opacity: 0, x: -60, y: -80 }}
-            animate={{ 
-              opacity: 1, 
-              x: -110, 
-              y: [-110, -118, -110] 
-            }}
-            transition={{ 
-              opacity: { duration: 1, delay: 0.3 },
-              x: { duration: 1, delay: 0.3 },
-              y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.3 }
-            }}
-            whileHover={{ scale: 1.03, rotate: -1 }}
-            className="absolute p-4 w-44 bg-card/90 backdrop-blur-sm border border-border rounded-2xl shadow-xl z-30 hover:border-primary/30 transition-all cursor-pointer"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <ShoppingBag className="w-4 h-4 text-primary" />
-              <span className="text-[10px] font-bold text-foreground">Nền tảng bán hàng</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground leading-relaxed">Vận hành và tương tác mua bán trong hệ sinh thái.</p>
-            <div className="mt-2.5 flex justify-between items-center">
-              <span className="text-[8px] bg-primary/10 text-primary px-2 py-0.5 rounded font-medium">Đang hoạt động</span>
-            </div>
-          </motion.div>
+            {/* Connected Card 1: Nền tảng bán hàng */}
+            <motion.div 
+              initial={{ opacity: 0, x: -110, y: -110 }}
+              animate={{ 
+                opacity: 1, 
+                x: [-102, -110, -118, -110, -102], 
+                y: [-110, -102, -110, -118, -110] 
+              }}
+              transition={{ 
+                opacity: { duration: 1, delay: 0.3 },
+                x: { repeat: Infinity, duration: 6, ease: "linear" },
+                y: { repeat: Infinity, duration: 6, ease: "linear" }
+              }}
+              whileHover={{ scale: 1.03, rotate: -1 }}
+              style={{ transform: "translateZ(40px)" }}
+              className="absolute p-4 w-44 bg-card/90 backdrop-blur-sm border border-border rounded-2xl shadow-xl z-30 hover:border-primary/30 transition-all cursor-pointer"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <ShoppingBag className="w-4 h-4 text-primary" />
+                <span className="text-[10px] font-bold text-foreground">Nền tảng bán hàng</span>
+              </div>
+              <p className="text-[9px] text-muted-foreground leading-relaxed">Vận hành và tương tác mua bán trong hệ sinh thái.</p>
+              <div className="mt-2.5 flex justify-between items-center">
+                <span className="text-[8px] bg-primary/10 text-primary px-2 py-0.5 rounded font-medium">Đang hoạt động</span>
+              </div>
+            </motion.div>
 
-          {/* Connected Card 2: Nền tảng cộng đồng */}
-          <motion.div 
-            initial={{ opacity: 0, x: 60, y: -60 }}
-            animate={{ 
-              opacity: 1, 
-              x: 110, 
-              y: [-80, -74, -80] 
-            }}
-            transition={{ 
-              opacity: { duration: 1, delay: 0.5 },
-              x: { duration: 1, delay: 0.5 },
-              y: { repeat: Infinity, duration: 5.5, ease: "easeInOut", delay: 0.5 }
-            }}
-            whileHover={{ scale: 1.03, rotate: 1 }}
-            className="absolute p-4 w-44 bg-card/90 backdrop-blur-sm border border-border rounded-2xl shadow-xl z-30 transition-all cursor-not-allowed"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <Users className="w-4 h-4 text-primary" />
-              <span className="text-[10px] font-bold text-foreground">Nền tảng cộng đồng</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground leading-relaxed">Kết nối, tương tác và chia sẻ với người dùng.</p>
-            <div className="mt-2.5 flex justify-between items-center">
-              <span className="text-[8px] bg-muted text-muted-foreground px-2 py-0.5 rounded font-medium">Đang phát triển</span>
-            </div>
-          </motion.div>
+            {/* Connected Card 2: Nền tảng cộng đồng */}
+            <motion.div 
+              initial={{ opacity: 0, x: 110, y: -80 }}
+              animate={{ 
+                opacity: 1, 
+                x: [110, 102, 110, 118, 110], 
+                y: [-72, -80, -88, -80, -72] 
+              }}
+              transition={{ 
+                opacity: { duration: 1, delay: 0.5 },
+                x: { repeat: Infinity, duration: 6, ease: "linear" },
+                y: { repeat: Infinity, duration: 6, ease: "linear" }
+              }}
+              whileHover={{ scale: 1.03, rotate: 1 }}
+              style={{ transform: "translateZ(40px)" }}
+              className="absolute p-4 w-44 bg-card/90 backdrop-blur-sm border border-border rounded-2xl shadow-xl z-30 transition-all cursor-not-allowed"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <Users className="w-4 h-4 text-primary" />
+                <span className="text-[10px] font-bold text-foreground">Nền tảng cộng đồng</span>
+              </div>
+              <p className="text-[9px] text-muted-foreground leading-relaxed">Kết nối, tương tác và chia sẻ với người dùng.</p>
+              <div className="mt-2.5 flex justify-between items-center">
+                <span className="text-[8px] bg-muted text-muted-foreground px-2 py-0.5 rounded font-medium">Đang phát triển</span>
+              </div>
+            </motion.div>
 
-          {/* Connected Card 3: Nền tảng xem phim */}
-          <motion.div 
-            initial={{ opacity: 0, y: 80 }}
-            animate={{ 
-              opacity: 1, 
-              x: -20, 
-              y: [130, 136, 130] 
-            }}
-            transition={{ 
-              opacity: { duration: 1, delay: 0.7 },
-              x: { duration: 1, delay: 0.7 },
-              y: { repeat: Infinity, duration: 6, ease: "easeInOut", delay: 0.7 }
-            }}
-            whileHover={{ scale: 1.03, rotate: -1 }}
-            className="absolute p-4 w-44 bg-card/90 backdrop-blur-sm border border-border rounded-2xl shadow-xl z-30 transition-all cursor-not-allowed"
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <Film className="w-4 h-4 text-primary" />
-              <span className="text-[10px] font-bold text-foreground">Nền tảng xem phim</span>
-            </div>
-            <p className="text-[9px] text-muted-foreground leading-relaxed">Thưởng thức kho nội dung giải trí chất lượng cao.</p>
-            <div className="mt-2.5 flex justify-between items-center">
-              <span className="text-[8px] bg-muted text-muted-foreground px-2 py-0.5 rounded font-medium">Đang phát triển</span>
-            </div>
-          </motion.div>
+            {/* Connected Card 3: Nền tảng xem phim */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20, y: 130 }}
+              animate={{ 
+                opacity: 1, 
+                x: [-28, -20, -12, -20, -28], 
+                y: [130, 138, 130, 122, 130] 
+              }}
+              transition={{ 
+                opacity: { duration: 1, delay: 0.7 },
+                x: { repeat: Infinity, duration: 6, ease: "linear" },
+                y: { repeat: Infinity, duration: 6, ease: "linear" }
+              }}
+              whileHover={{ scale: 1.03, rotate: -1 }}
+              style={{ transform: "translateZ(40px)" }}
+              className="absolute p-4 w-44 bg-card/90 backdrop-blur-sm border border-border rounded-2xl shadow-xl z-30 transition-all cursor-not-allowed"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <Film className="w-4 h-4 text-primary" />
+                <span className="text-[10px] font-bold text-foreground">Nền tảng xem phim</span>
+              </div>
+              <p className="text-[9px] text-muted-foreground leading-relaxed">Thưởng thức kho nội dung giải trí chất lượng cao.</p>
+              <div className="mt-2.5 flex justify-between items-center">
+                <span className="text-[8px] bg-muted text-muted-foreground px-2 py-0.5 rounded font-medium">Đang phát triển</span>
+              </div>
+            </motion.div>
         </div>
       </section>
 
@@ -503,41 +516,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
-
-      {/* --- MINIMAL FOOTER --- */}
-      <footer className="w-full bg-card border-t border-border/40 px-6 md:px-12 py-16 relative z-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-12 text-center md:text-left">
-          
-          {/* Brand Info */}
-          <div className="space-y-4 max-w-sm">
-            <h4 className="text-lg font-serif font-black tracking-tighter text-foreground">Nyxoris</h4>
-            <p className="text-xs text-muted-foreground font-light leading-relaxed">
-              Hệ sinh thái số cho mua bán, cộng đồng và giải trí.
-            </p>
-          </div>
-
-          {/* Quick links & Copyright info */}
-          <div className="flex flex-col items-center md:items-end gap-6">
-            <div className="flex items-center gap-6">
-              {[
-                { label: "Tổng quan", href: "#overview" },
-                { label: "Nền tảng", href: "#platforms" },
-                { label: "Lộ trình", href: "#roadmap" },
-              ].map((link) => (
-                <Link key={link.label} href={link.href} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-            <div className="text-[10px] text-muted-foreground">
-              &copy; 2026 Nyxoris. Mọi quyền được bảo lưu.
-            </div>
-          </div>
-
-        </div>
-      </footer>
     </main>
   );
 }

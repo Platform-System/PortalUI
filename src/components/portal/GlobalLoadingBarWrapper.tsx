@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { GlobalLoadingBar as DSGlobalLoadingBar } from '@platform-system/design-ui/components/global-loading-bar'
 
-export const GlobalLoadingBarWrapper = ({ isPending }: { isPending?: boolean }) => {
+export const GlobalLoadingBarWrapper = ({ isPending, className }: { isPending?: boolean; className?: string }) => {
   const pathname = usePathname()
   const [loading, setLoading] = useState(false)
 
@@ -17,5 +17,5 @@ export const GlobalLoadingBarWrapper = ({ isPending }: { isPending?: boolean }) 
     }
   }, [isPending, pathname])
 
-  return <DSGlobalLoadingBar isPending={isPending} loading={loading} />
+  return <DSGlobalLoadingBar isPending={isPending} loading={loading} className={className} />
 }
