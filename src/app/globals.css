@@ -26,6 +26,28 @@
 
 
 
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --card: #ffffff;
+  --store-accent-rgb: 99 102 241;
+  --store-border-rgb: 228 228 231;
+  --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
+}
+
+.dark {
+  --background: #030303;
+  --foreground: #f8fafc;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --border: rgba(255, 255, 255, 0.08);
+  --card: #09090b;
+  --store-border-rgb: 255 255 255 / 0.08;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -51,6 +73,52 @@ body {
     pointer-events: none;
     filter: blur(52px);
   }
+
+  .bg-grid-pattern {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+  }
+
+  .nav-link-underline {
+    position: relative;
+  }
+
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--foreground);
+    transform-origin: bottom right;
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .nav-link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
+@keyframes blob-pivot {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -60px) scale(1.1); }
+  66% { transform: translate(-30px, 30px) scale(0.9); }
+}
+
+.animate-blob-slow {
+  animation: blob-pivot 25s infinite ease-in-out;
+}
+
+.animate-blob-slow-delayed {
+  animation: blob-pivot 30s infinite ease-in-out;
+  animation-delay: 5s;
 }
 
 /* Tinh chỉnh màu bôi đen (Selection) */
