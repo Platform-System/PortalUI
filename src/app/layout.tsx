@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import I18nProvider from "@/core/providers/I18nProvider";
 import { defaultLocale } from "@/i18n/config";
 import viMessages from "../../messages/vi.json";
@@ -16,18 +16,6 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ['400', '500', '600', '700', '800'],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin', 'vietnamese'],
-  style: ['italic', 'normal'],
-  variable: '--font-playfair',
-});
-
 export const metadata: Metadata = {
   title: BRAND_METADATA.title,
   description: "The gateway to the Nyxoris digital ecosystem.",
@@ -41,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <body
-        className={`${plusJakarta.variable} ${geistMono.variable} ${playfair.variable} antialiased min-h-screen bg-background text-foreground relative overflow-x-hidden`}
+        className={`${plusJakarta.variable} antialiased min-h-screen bg-background text-foreground relative overflow-x-hidden`}
       >
         <ThemeProvider defaultTheme="dark">
           <I18nProvider locale={defaultLocale} messages={viMessages as unknown as AbstractIntlMessages}>

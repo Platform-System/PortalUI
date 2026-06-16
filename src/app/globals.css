@@ -2,9 +2,9 @@
 @import "@platform-system/design-ui/index.css";
 
 @theme {
-  --font-sans: var(--font-plus-jakarta);
-  --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-plus-jakarta);
+  --font-sans: var(--font-family);
+  --font-mono: var(--font-family);
+  --font-serif: var(--font-family);
 
   --color-primary: rgb(var(--store-accent-rgb));
   --color-secondary: rgb(var(--store-surface-strong-rgb));
@@ -27,7 +27,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-plus-jakarta), sans-serif;
+  font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
