@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
   ArrowRight, ShoppingBag, Users, Film, Zap, Globe, Plus
 } from "lucide-react";
