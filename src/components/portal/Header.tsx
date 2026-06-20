@@ -5,7 +5,7 @@ import Link from "next/link"
 import { 
   Globe, ShoppingBag, MessageSquare 
 } from "lucide-react"
-import { PlatformSwitcherMenu } from "@platform-system/design-ui/components/platform-switcher-menu"
+import { PlatformSwitcherMenu } from '@platform-system/design-ui';
 
 const portals = [
   { id: 'customer', name: 'Cổng khách hàng', url: 'https://nyxoris.com', icon: <Globe size={16} />, active: true },

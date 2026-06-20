@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { useTheme } from "@platform-system/design-ui/use-theme"
+import { useTheme } from '@platform-system/design-ui';
 
 interface Particle {
   x: number

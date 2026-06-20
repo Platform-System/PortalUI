@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { GlobalLoadingBar as DSGlobalLoadingBar } from '@platform-system/design-ui/components/global-loading-bar'
+import { GlobalLoadingBar as DSGlobalLoadingBar } from '@platform-system/design-ui';
 
 export const GlobalLoadingBarWrapper = ({ isPending, className }: { isPending?: boolean; className?: string }) => {
   const pathname = usePathname()
