@@ -46,6 +46,7 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^1.16.0",
     "@platform-system/api-client": "*",
+    "axios": "^1.16.1",
     "keycloak-js": "^26.2.4",
     "next": "^16.2.6",
     "next-intl": "^4.9.1",
