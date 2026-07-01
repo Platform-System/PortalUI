@@ -10,7 +10,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@platform-system/design-ui": "*",
+    "@platform-system/design-ui": "git+ssh://git@github.com/Platform-System/Platform.DesignSystemUI.git",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
@@ -45,7 +45,7 @@
     "framer-motion": "^12.38.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^1.16.0",
-    "@platform-system/api-client": "*",
+    "@platform-system/api-client": "git+ssh://git@github.com/Platform-System/Platform.ApiClient.git",
     "axios": "^1.16.1",
     "keycloak-js": "^26.2.4",
     "next": "^16.2.6",
