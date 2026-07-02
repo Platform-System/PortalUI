@@ -2,6 +2,7 @@
 @import "@platform-system/design-ui/index.css";
 @source "../../**/*.tsx";
 @source "../../**/*.ts";
+@source "../../node_modules/@platform-system/design-ui/src/**/*.tsx";
 @source "../../../node_modules/@platform-system/design-ui/src/**/*.tsx";
 @source "../../../Platform.DesignUI/src/**/*.tsx";
 
