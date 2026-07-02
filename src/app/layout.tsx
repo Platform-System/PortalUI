@@ -7,6 +7,7 @@ import { AbstractIntlMessages } from "next-intl";
 import { BRAND_METADATA, ThemeProvider } from '@platform-system/design-ui';
 import AuthProvider from "@/core/providers/AuthProvider";
 import "./globals.css";
+import "@/tailwind-safelist";
 import { Header } from "@/components/portal/Header";
 import { AmbientParticles } from "@/components/portal/AmbientParticles";
 
