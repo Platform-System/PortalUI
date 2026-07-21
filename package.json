@@ -1,5 +1,5 @@
 {
-  "name": "platform-portal-ui",
+  "name": "portal-ui",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@platform-system/design-ui": "*",
+    "@system/design-ui": "*",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
@@ -45,7 +45,7 @@
     "framer-motion": "^12.38.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^1.16.0",
-    "@platform-system/api-client": "*",
+    "@system/api-client": "*",
     "axios": "^1.16.1",
     "keycloak-js": "^26.2.4",
     "next": "^16.2.6",

@@ -4,7 +4,7 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
 
-interface PortalPlatformCardProps {
+interface PortalCardProps {
   href: string
   title: string
   subtitle: string
@@ -18,7 +18,7 @@ interface PortalPlatformCardProps {
   motionFrom: "left" | "right"
 }
 
-export function PortalPlatformCard({
+export function PortalCard({
   href,
   title,
   subtitle,
@@ -30,7 +30,7 @@ export function PortalPlatformCard({
   decorativeVisual,
   footerVisual,
   motionFrom,
-}: PortalPlatformCardProps) {
+}: PortalCardProps) {
   const statusClasses =
     statusTone === "online"
       ? {

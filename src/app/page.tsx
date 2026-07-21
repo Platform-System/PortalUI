@@ -5,7 +5,7 @@ import {
   ArrowRight, ShoppingBag, Users, Film, Zap, Globe, Plus
 } from "lucide-react";
 import Link from "next/link";
-import { ACTIVE_PLATFORM_URL } from "@/core/constants";
+import { ACTIVE_PORTAL_URL } from "@/core/constants";
 import { PortalSectionIntro } from "@/components/portal/PortalSectionIntro";
 
 export default function Home() {
@@ -280,7 +280,7 @@ export default function Home() {
             </div>
             <div className="mt-8 pt-6 border-t border-border/40">
               <Link
-                href={ACTIVE_PLATFORM_URL}
+                href={ACTIVE_PORTAL_URL}
                 className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:opacity-90 text-primary-foreground text-xs font-bold uppercase tracking-wider py-3 rounded-xl transition-all hover:scale-102 active:scale-[0.98] group-hover:shadow-lg group-hover:shadow-primary/10"
               >
                 <span>Truy cập nền tảng</span>

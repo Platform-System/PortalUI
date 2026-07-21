@@ -1,1 +1,1 @@
-export const ACTIVE_PLATFORM_URL = "https://merchant.nyxoris.com";
+export const ACTIVE_PORTAL_URL = "https://merchant.nyxoris.com";

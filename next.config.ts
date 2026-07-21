@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "standalone",
-  transpilePackages: ["@platform-system/design-ui", "@platform-system/api-client"],
+  transpilePackages: ["@system/design-ui", "@system/api-client"],
   experimental: {
     externalDir: true,
   },

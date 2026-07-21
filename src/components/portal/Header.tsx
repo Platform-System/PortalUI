@@ -17,7 +17,7 @@ import {
   UserProfileDropdown,
   UserProfileCard,
   Button
-} from '@platform-system/design-ui';
+} from '@system/design-ui';
 import { useAuth } from "@/core/providers/AuthProvider"
 import { apiClient } from "@/core/apiClient"
 
